@@ -59,7 +59,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![LevelUp! SCOUT]](/screenshoot/welcome_page.gif)
+[![LevelUp! SCOUT]](/screenshoot/welcome_page.jpg)
 
 This website lets the Indonesian Scout members to track their advancement records in order to pursue certain levels or ranks of Indonesian Scout. When all the requirements of each levels has been accomplished, the members will get certain badge to prove that they pass the level.  `scout`, `Indonesia Scout`, `Scout requirements`, `Scout level`, `Badges`, `email`, `Level Up! SCOUT`, `a website`
 
@@ -79,11 +79,13 @@ This website lets the Indonesian Scout members to track their advancement record
 
 Please see the images below to take a look to our website' features
 
-* homepage ![Screenshoot homepage 1](/screenshoot/welcome_page.gif)
-*  there are two types of user: scout member and scout master ![screenshoot_two_types](/screenshoot/two_types_of_user.gif)
-*  The login page ![login page](/screenshoot/login_page.gif)
-* The checklist, where the scout member can give checklist to the requirements ![checklist](/screemshoot/checklist.gif)
-* the requirements, where the scout member see the requirements ![requirements](/screenshoot/requirements.gif)
+* homepage ![Screenshoot homepage 1](/screenshoot/welcome_page.jpg)
+*  there are two types of user to login: scout member and scout master ![screenshoot_two_types](/screenshoot/login_page.jpg)
+* the scoutmaster homepage ![scoutmaster_homepage](/screenshoot/master_homepage.jpg)
+* the scoutmember homepage ![scoutmember_homepage](/screenshoot/member_homepage.jpg)
+* The requirement checklist, where the scout member can give checklist to the requirements ![checklist](/screenshoot/requirement_checkbox.jpg)
+* the requirements, where the scout member see the requirements ![requirements](/screenshoot/requirement_list.jpg)
+* presentation of our final project could be seen here [presentation_video](https://youtu.be/ZMrU5Imdye4)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -142,7 +144,7 @@ This are the steps how to run the website locally. Make sure you have had a gith
 
 This website lets the Indonesian Scout members log in and access the website using given accounts. They can see and access the main homepage showing the three level of advancements and see the requirements in different page. They also can see their progress of each level on the main homepage. Moreover, once they complete each level, a badge picture will appear in the same main homepage. In order to achieve the level, the Indonesian scout members should click on the level button they wish to achieve then click all the requirements on different page (certain level page). When all the requirements of each level has been achieved, the next level requirements can be accessed. On the other hand, the scout masters can review the scout members progress and do action like delete or give validation.
 
-_For more examples, please refer to the_ ![Homepage](/screenshoot/welcome_page.gif)
+_For more examples, please refer to the_ ![Homepage](/screenshoot/welcome_page.jpg)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
