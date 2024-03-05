@@ -1,0 +1,79 @@
+/* static/style.css */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f0e1; /* Light beige background */
+    color: #362818; /* Dark brown text color */
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    color: #3c2b11; /* Dark brown headings */
+}
+
+a {
+    color: #6e4c1e; /* Medium brown links */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #9e7151; /* Light brown on hover */
+}
+
+form {
+    width: 300px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #362818; /* Dark brown label text */
+}
+
+input,
+select,
+button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #6e4c1e; /* Medium brown button */
+    color: #fff; /* White button text */
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #9e7151; /* Light brown button on hover */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.flash {
+    color: #fff;
+    background-color: #9e7151; /* Light brown flash messages */
+    padding: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.flash.success {
+    background-color: #5e3e1e; /* Dark brown success flash messages */
+}
+
+.modal-content img {
+    max-width: 100%;
+    max-height: 80vh; /* Adjust the value as needed */
+    display: block;
+    margin: 0 auto;
+}
+
+
+/* Add more styles as needed */
