@@ -1,0 +1,748 @@
+<!-- templates/scout_home.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level Up! SCOUT - Scout Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    <!-- favicon pramuka/ -->
+    <link href="/static/favicon.ico" rel="icon">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif; /* Use the Poppins font */
+        }
+
+        .card {
+            margin-bottom: 20px; /* Add some margin between cards */
+        }
+
+        .requirements-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .requirements-list-item {
+            margin-bottom: 8px;
+        }
+
+        .requirements-button {
+            margin-top: 10px;
+        }
+
+        .form-check-input {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <nav>
+        <ul>
+            <!-- Add a Logout link with Bootstrap styling -->
+            <li><a href="#" class="btn btn-outline-danger" onclick="confirmLogout()">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Welcome, {{ username }}!</h2>
+                    <p class="card-text">Track your advancement records and achieve new levels on Level Up! SCOUT.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <!-- RAMU Level -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Ramu (Level 1)</h3>
+                    <p class="card-text">Progress: <span id="ramu-progress">0%</span></p>
+                    <div class="progress">
+                        <div id="ramu-progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <button class="btn btn-secondary requirements-button" onclick="showRequirementsModal('ramu')">List of RAMU's requirements</button>
+                    <div class="modal fade" id="ramuModal" tabindex="-1" aria-labelledby="ramuModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="ramuModalLabel">List of RAMU's Requirements</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{{ url_for('static', filename='ramu_list.png') }}" alt="RAMU Requirements">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="ramu-button" class="btn btn-primary requirements-button" onclick="showRequirements('ramu')">View Requirements</button>
+
+                    <!-- RAMU Requirements -->
+                    <div id="ramu-requirements-list" class="requirements-list" style="display: none;">
+                        <h4>Requirements:</h4>
+                        <ul class="requirements-list">
+                            <li class="requirements-list-item">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement1">
+                                    <label class="form-check-label" for="ramu-requirement1">
+                                        <span style="margin-left: 8px;"></span>01
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement2">
+                                    <label class="form-check-label" for="ramu-requirement2">
+                                        <span style="margin-left: 8px;"></span>02
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement3">
+                                    <label class="form-check-label" for="ramu-requirement3">
+                                        <span style="margin-left: 8px;"></span>03
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement4">
+                                    <label class="form-check-label" for="ramu-requirement4">
+                                        <span style="margin-left: 8px;"></span>04
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement5">
+                                    <label class="form-check-label" for="ramu-requirement5">
+                                        <span style="margin-left: 8px;"></span>05
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement6">
+                                    <label class="form-check-label" for="ramu-requirement6">
+                                        <span style="margin-left: 8px;"></span>06
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement7">
+                                    <label class="form-check-label" for="ramu-requirement7">
+                                        <span style="margin-left: 8px;"></span>07
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement8">
+                                    <label class="form-check-label" for="ramu-requirement8">
+                                        <span style="margin-left: 8px;"></span>08
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement9">
+                                    <label class="form-check-label" for="ramu-requirement9">
+                                        <span style="margin-left: 8px;"></span>09
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement10">
+                                    <label class="form-check-label" for="ramu-requirement10">
+                                        <span style="margin-left: 8px;"></span>10
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement11">
+                                    <label class="form-check-label" for="ramu-requirement11">
+                                        <span style="margin-left: 8px;"></span>11
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement12">
+                                    <label class="form-check-label" for="ramu-requirement12">
+                                        <span style="margin-left: 8px;"></span>12
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement13">
+                                    <label class="form-check-label" for="ramu-requirement13">
+                                        <span style="margin-left: 8px;"></span>13
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement14">
+                                    <label class="form-check-label" for="ramu-requirement14">
+                                        <span style="margin-left: 8px;"></span>14
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement15">
+                                    <label class="form-check-label" for="ramu-requirement15">
+                                        <span style="margin-left: 8px;"></span>15
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement16">
+                                    <label class="form-check-label" for="ramu-requirement16">
+                                        <span style="margin-left: 8px;"></span>16
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement17">
+                                    <label class="form-check-label" for="ramu-requirement17">
+                                        <span style="margin-left: 8px;"></span>17
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement18">
+                                    <label class="form-check-label" for="ramu-requirement18">
+                                        <span style="margin-left: 8px;"></span>18
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement19">
+                                    <label class="form-check-label" for="ramu-requirement19">
+                                        <span style="margin-left: 8px;"></span>19
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement20">
+                                    <label class="form-check-label" for="ramu-requirement20">
+                                        <span style="margin-left: 8px;"></span>20
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement21">
+                                    <label class="form-check-label" for="ramu-requirement21">
+                                        <span style="margin-left: 8px;"></span>21
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement22">
+                                    <label class="form-check-label" for="ramu-requirement22">
+                                        <span style="margin-left: 8px;"></span>22
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement23">
+                                    <label class="form-check-label" for="ramu-requirement23">
+                                        <span style="margin-left: 8px;"></span>23
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement24">
+                                    <label class="form-check-label" for="ramu-requirement24">
+                                        <span style="margin-left: 8px;"></span>24
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement25">
+                                    <label class="form-check-label" for="ramu-requirement25">
+                                        <span style="margin-left: 8px;"></span>25
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement26">
+                                    <label class="form-check-label" for="ramu-requirement26">
+                                        <span style="margin-left: 8px;"></span>26
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement27">
+                                    <label class="form-check-label" for="ramu-requirement27">
+                                        <span style="margin-left: 8px;"></span>27
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement28">
+                                    <label class="form-check-label" for="ramu-requirement28">
+                                        <span style="margin-left: 8px;"></span>28
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement29">
+                                    <label class="form-check-label" for="ramu-requirement29">
+                                        <span style="margin-left: 8px;"></span>29
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ramu-requirement30">
+                                    <label class="form-check-label" for="ramu-requirement30">
+                                        <span style="margin-left: 8px;"></span>30
+                                    </label>
+                                </div>
+                            </li>
+                            <!-- Add more requirements as needed -->
+                        </ul>
+                        <button type="button" class="btn btn-primary requirements-button" onclick="saveProgress('ramu', getRamuProgress())">Save Progress</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RAKIT Level -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Rakit (Level 2)</h3>
+                    <p class="card-text">Progress: <span id="rakit-progress">0%</span></p>
+                    <div class="progress">
+                        <div id="rakit-progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <button class="btn btn-secondary requirements-button" onclick="showRequirementsModal('rakit')">List of RAKIT's requirements</button>
+                    <div class="modal fade" id="rakitModal" tabindex="-1" aria-labelledby="rakitModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="rakitModalLabel">List of RAKIT's Requirements</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{{ url_for('static', filename='rakit_list.png') }}" alt="RAKIT Requirements">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="rakit-button" class="btn btn-primary requirements-button" onclick="showRequirements('rakit')">View Requirements</button>
+
+                    <!-- RAKIT Requirements -->
+                    <div id="rakit-requirements-list" class="requirements-list" style="display: none;">
+                        <h4>Requirements:</h4>
+                        <ul class="requirements-list">
+                            <li class="requirements-list-item">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement1">
+                                    <label class="form-check-label" for="rakit-requirement1">01</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement2">
+                                    <label class="form-check-label" for="rakit-requirement2">02</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement3">
+                                    <label class="form-check-label" for="rakit-requirement3">03</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement4">
+                                    <label class="form-check-label" for="rakit-requirement4">04</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement5">
+                                    <label class="form-check-label" for="rakit-requirement5">05</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement6">
+                                    <label class="form-check-label" for="rakit-requirement6">06</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement7">
+                                    <label class="form-check-label" for="rakit-requirement7">07</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement8">
+                                    <label class="form-check-label" for="rakit-requirement8">08</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement9">
+                                    <label class="form-check-label" for="rakit-requirement9">09</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement10">
+                                    <label class="form-check-label" for="rakit-requirement10">10</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement11">
+                                    <label class="form-check-label" for="rakit-requirement11">11</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement12">
+                                    <label class="form-check-label" for="rakit-requirement12">12</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement13">
+                                    <label class="form-check-label" for="rakit-requirement13">13</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement14">
+                                    <label class="form-check-label" for="rakit-requirement14">14</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement15">
+                                    <label class="form-check-label" for="rakit-requirement15">15</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement16">
+                                    <label class="form-check-label" for="rakit-requirement16">16</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement17">
+                                    <label class="form-check-label" for="rakit-requirement17">17</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement18">
+                                    <label class="form-check-label" for="rakit-requirement18">18</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement19">
+                                    <label class="form-check-label" for="rakit-requirement19">19</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement20">
+                                    <label class="form-check-label" for="rakit-requirement20">20</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement21">
+                                    <label class="form-check-label" for="rakit-requirement21">21</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement22">
+                                    <label class="form-check-label" for="rakit-requirement22">22</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement23">
+                                    <label class="form-check-label" for="rakit-requirement23">23</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement24">
+                                    <label class="form-check-label" for="rakit-requirement24">24</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement25">
+                                    <label class="form-check-label" for="rakit-requirement25">25</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement26">
+                                    <label class="form-check-label" for="rakit-requirement26">26</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement27">
+                                    <label class="form-check-label" for="rakit-requirement27">27</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement28">
+                                    <label class="form-check-label" for="rakit-requirement28">28</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement29">
+                                    <label class="form-check-label" for="rakit-requirement29">29</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rakit-requirement30">
+                                    <label class="form-check-label" for="rakit-requirement30">30</label>
+                            </li>
+                            <!-- Add more requirements as needed -->
+                        </ul>
+                        <button type="button" class="btn btn-primary requirements-button" onclick="saveProgress('rakit')">Save Progress</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TERAP Level -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Terap (Level 3)</h3>
+                    <p class="card-text">Progress: <span id="terap-progress">0%</span></p>
+                    <div class="progress">
+                        <div id="terap-progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <button class="btn btn-secondary requirements-button" onclick="showRequirementsModal('terap')">List of TERAP's requirements</button>
+                    <div class="modal fade" id="terapModal" tabindex="-1" aria-labelledby="terapModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="terapModalLabel">List of TERAP's Requirements</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="{{ url_for('static', filename='terap_list.png') }}" alt="TERAP Requirements">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="terap-button" class="btn btn-primary requirements-button" onclick="showRequirements('terap')">View Requirements</button>
+
+                    <!-- TERAP Requirements -->
+                    <div id="terap-requirements-list" class="requirements-list" style="display: none;">
+                        <h4>Requirements:</h4>
+                        <ul class="requirements-list">
+                            <li class="requirements-list-item">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement1">
+                                    <label class="form-check-label" for="terap-requirement1">01</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement2">
+                                    <label class="form-check-label" for="terap-requirement2">02</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement3">
+                                    <label class="form-check-label" for="terap-requirement3">03</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement4">
+                                    <label class="form-check-label" for="terap-requirement4">04</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement5">
+                                    <label class="form-check-label" for="terap-requirement5">05</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement6">
+                                    <label class="form-check-label" for="terap-requirement6">06</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement7">
+                                    <label class="form-check-label" for="terap-requirement7">07</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement8">
+                                    <label class="form-check-label" for="terap-requirement8">08</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement9">
+                                    <label class="form-check-label" for="terap-requirement9">09</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement10">
+                                    <label class="form-check-label" for="terap-requirement10">10</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement11">
+                                    <label class="form-check-label" for="terap-requirement11">11</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement12">
+                                    <label class="form-check-label" for="terap-requirement12">12</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement13">
+                                    <label class="form-check-label" for="terap-requirement13">13</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement14">
+                                    <label class="form-check-label" for="terap-requirement14">14</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement15">
+                                    <label class="form-check-label" for="terap-requirement15">15</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement16">
+                                    <label class="form-check-label" for="terap-requirement16">16</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement17">
+                                    <label class="form-check-label" for="terap-requirement17">17</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement18">
+                                    <label class="form-check-label" for="terap-requirement18">18</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement19">
+                                    <label class="form-check-label" for="terap-requirement19">19</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement20">
+                                    <label class="form-check-label" for="terap-requirement20">20</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement21">
+                                    <label class="form-check-label" for="terap-requirement21">21</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement22">
+                                    <label class="form-check-label" for="terap-requirement22">22</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement23">
+                                    <label class="form-check-label" for="terap-requirement23">23</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement24">
+                                    <label class="form-check-label" for="terap-requirement24">24</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement25">
+                                    <label class="form-check-label" for="terap-requirement25">25</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement26">
+                                    <label class="form-check-label" for="terap-requirement26">26</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement27">
+                                    <label class="form-check-label" for="terap-requirement27">27</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement28">
+                                    <label class="form-check-label" for="terap-requirement28">28</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement29">
+                                    <label class="form-check-label" for="terap-requirement29">29</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terap-requirement30">
+                                    <label class="form-check-label" for="terap-requirement30">30</label>
+                            </li>
+                            <!-- Add more requirements as needed -->
+                        </ul>
+                        <button type="button" class="btn btn-primary requirements-button" onclick="saveProgress('terap')">Save Progress</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    function updateRamuProgress() {
+        var checkboxes = document.querySelectorAll('#ramu-requirements-list input[type="checkbox"]');
+        var checkedCheckboxes = document.querySelectorAll('#ramu-requirements-list input[type="checkbox"]:checked');
+        var progress = (checkedCheckboxes.length / checkboxes.length) * 100;
+
+        // Update the progress bar width and text
+        document.getElementById('ramu-progress-bar').style.width = progress + '%';
+        document.getElementById('ramu-progress').innerText = progress.toFixed(0) + '%';
+    }
+
+    // Call the updateRamuProgress function on page load to set initial progress
+    updateRamuProgress();
+
+    // Add event listeners to checkboxes for real-time progress updates
+    var ramuCheckboxes = document.querySelectorAll('#ramu-requirements-list input[type="checkbox"]');
+    ramuCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', updateRamuProgress);
+    });
+</script>
+
+<script>
+    function updateRakitProgress() {
+        var checkboxes = document.querySelectorAll('#rakit-requirements-list input[type="checkbox"]');
+        var checkedCheckboxes = document.querySelectorAll('#rakit-requirements-list input[type="checkbox"]:checked');
+        var progress = (checkedCheckboxes.length / checkboxes.length) * 100;
+
+        // Update the progress bar width and text
+        document.getElementById('rakit-progress-bar').style.width = progress + '%';
+        document.getElementById('rakit-progress').innerText = progress.toFixed(0) + '%';
+    }
+
+    // Call the updateRakitProgress function on page load to set initial progress
+    updateRakitProgress();
+
+    // Add event listeners to checkboxes for real-time progress updates
+    var rakitCheckboxes = document.querySelectorAll('#rakit-requirements-list input[type="checkbox"]');
+    rakitCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', updateRakitProgress);
+    });
+</script>
+
+<script>
+    function updateTerapProgress() {
+        var checkboxes = document.querySelectorAll('#terap-requirements-list input[type="checkbox"]');
+        var checkedCheckboxes = document.querySelectorAll('#terap-requirements-list input[type="checkbox"]:checked');
+        var progress = (checkedCheckboxes.length / checkboxes.length) * 100;
+
+        // Update the progress bar width and text
+        document.getElementById('terap-progress-bar').style.width = progress + '%';
+        document.getElementById('terap-progress').innerText = progress.toFixed(0) + '%';
+    }
+
+    // Call the updateTerapProgress function on page load to set initial progress
+    updateTerapProgress();
+
+    // Add event listeners to checkboxes for real-time progress updates
+    var terapCheckboxes = document.querySelectorAll('#terap-requirements-list input[type="checkbox"]');
+    terapCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', updateTerapProgress);
+    });
+</script>
+
+<script>
+    // ... (your existing functions)
+
+    function saveProgress(level) {
+        var checkboxes = document.querySelectorAll('#' + level + '-requirements-list input[type="checkbox"]');
+        var checkedCheckboxes = document.querySelectorAll('#' + level + '-requirements-list input[type="checkbox"]:checked');
+
+        // Save the progress (you can use your preferred method here, such as AJAX to send the data to a server)
+        // For demonstration purposes, let's use localStorage to store the progress locally
+        localStorage.setItem(level + '-progress', JSON.stringify(Array.from(checkedCheckboxes).map(cb => cb.id)));
+
+        // You can also display a confirmation or perform other actions as needed
+        alert('Progress saved for ' + level + '!');
+    }
+</script>
+<script>
+
+    function showConfirmationMessage(message) {
+        // Create the confirmation message element
+        var confirmationMessage = $('<div/>', {
+            id: 'confirmation-message',
+            class: 'alert alert-success',
+         text: message
+        });
+
+        // Append the confirmation message to the body
+        $('body').append(confirmationMessage);
+
+        // Display the confirmation message for a few seconds
+        confirmationMessage.fadeIn().delay(3000).fadeOut(400, function () {
+            // Remove the confirmation message after fading out
+            $(this).remove();
+        });
+    }
+
+</script>
+
+
+<script>
+    function showRequirements(level) {
+        var requirementsList = document.getElementById(level + '-requirements-list');
+
+        // Toggle the display of the requirements for the selected level
+        if (requirementsList.style.display === 'none' || requirementsList.style.display === '') {
+            requirementsList.style.display = 'block';
+        } else {
+            requirementsList.style.display = 'none';
+        }
+    }
+
+
+    function confirmLogout() {
+        var confirmLogout = confirm("Are you sure you want to logout?");
+        if (confirmLogout) {
+            window.location.href = "/logout";  // Redirect to logout route
+        }
+    }
+</script>
+
+<script>
+    function showRequirementsModal(level) {
+        // Show the modal for the specified level
+        $('#' + level + 'Modal').modal('show');
+    }
+</script>
+
+</body>
+</html>
